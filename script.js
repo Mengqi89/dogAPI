@@ -25,7 +25,7 @@ function renderImages(array) {
 
 function displayResults(responseJson) {
   const messageArray = responseJson.message;
-  //console.log('image', messageArray);
+  console.log('image', messageArray);
   renderImages(messageArray);
 }
 
