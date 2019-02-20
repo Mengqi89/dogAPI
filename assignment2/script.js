@@ -14,7 +14,6 @@ function generateImgHtml(array) {
   }
   //console.log(imagesHtmlArray);
   return imagesHtmlArray.join('');
-
 }
 
 const IMAGES_EL = $('#display');
@@ -30,15 +29,48 @@ function displayResults(responseJson) {
   renderImages(messageArray);
 }
 
+function getBreedImage(breed) {
+  fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
+  .then(response => {
+    console.log(response.status);
+    return response.json();
+  })
+  .then(responseJson => displayBreed(responseJson, breed))
+  .catch(error => alert('Breed not found'));
+}
 
+function generateBreedImg(url, breed) {
+  return `<img src="${url}" alt="dog image of ${breed}">`
+} 
+
+function renderBreed(url, breed) {
+  const html = generateBreedImg(url, breed);
+  IMAGES_EL.html(html);
+}
+
+function displayBreed(response, breed) {
+  const breedUrl = response.message;
+  if (breedUrl === "Breed not found") {
+    alert("Breed not found");
+  }
+  else {renderBreed(breedUrl, breed);}
+}
 
 function watchForm() {
-  $('form').submit(event => {
+  $('#form1').submit(event => {
     event.preventDefault();
     let userInput = $('#num').val();
     getDogImage(userInput);
   });
+
+  $('#form2').submit(event => {
+    event.preventDefault();
+    let userQuery = $('#breed').val();
+    console.log(userQuery);
+    getBreedImage(userQuery);
+  })
 }
+
 
 $(function() {
   console.log('App loaded! Waiting for submit!');
