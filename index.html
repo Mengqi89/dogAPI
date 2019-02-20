@@ -5,23 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dog API Example</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
         <h1>Dog API: A Simple Example</h1>
-
-        <form>
+        <form id="form1">
         <input id="num" type="text" value = 3 placeholder="Input a value between 1 to 50">
         <input type="submit" value="Get a dog pic!">
         </form>
 
+        <form id="form2">
+            <input type="text" id="breed" placeholder="put your favorite breed here">
+            <input type="submit" id="breedButton">
+        </form>
+
         <div class="" id="display">
-
+          
         </div>
-
     </div>
-    <script src="scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
